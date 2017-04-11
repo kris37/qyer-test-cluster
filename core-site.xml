@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+     <property>
+        <name>qyer-hadoop</name>
+        <value>172.17.0.2</value>
+    </property>
+	 <!--客户端连接HDFS时，默认的路径前缀-->
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://${qyer-hadoop}:8020</value>
+    </property>
+     <!--A base for other temporary directories.-->
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/hdd1/hadoop/tmp</value>
+    </property>
+    <property>
+        <name>io.file.buffer.size</name>
+        <value>4096</value>
+    </property>
+    <!--add lzo lzop-->
+    <property>
+        <name>io.compression.codecs</name>
+        <value>
+            org.apache.hadoop.io.compress.GzipCodec,
+            org.apache.hadoop.io.compress.DefaultCodec,
+            org.apache.hadoop.io.compress.BZip2Codec,
+            org.apache.hadoop.io.compress.SnappyCodec,
+            com.hadoop.compression.lzo.LzoCodec,
+            com.hadoop.compression.lzo.LzopCodec
+        </value>
+    </property>
+    <property> 
+         <name>io.compression.codec.lzo.class</name> 
+         <value>com.hadoop.compression.lzo.LzoCodec</value> 
+    </property> 
+    <!-- trash time 7days-->
+    <property>
+        <name>fs.trash.interval</name>
+        <value>10080</value>
+    </property>
+    <!--The maximum number of concurrent connections a server is allowed to accept. 0 means no limit.-->
+    <property>
+        <name>ipc.server.max.connections</name>
+        <value>0</value>
+    </property>
+     <!--Indicates the length of the listen queue for servers accepting client connections.-->
+    <property>
+        <name>ipc.server.listen.queue.size</name>
+        <value>128</value>
+    </property>
+    <!--The local directory where sequence file stores intermediate data files during merge. -->
+    <property>
+        <name>io.seqfile.local.dir</name>
+        <value>
+            /hdd1/io/local/,
+            /hdd1/io/local_2/
+        </value>
+    </property>
+    <!--hadoop 支持的文件系统命名规则 hdfs local ftp s3 hftp ...-->
+     <property>
+        <name>fs.hdfs.impl</name>
+        <value>org.apache.hadoop.hdfs.DistributedFileSystem</value>
+        <description>The FileSystem for hdfs: uris.</description>
+    </property>
+
+    <property>
+        <name>fs.file.impl</name>
+        <value>org.apache.hadoop.fs.LocalFileSystem</value>
+        <description>The FileSystem for file: uris.</description>
+    </property>
+
+    <property>
+        <name>fs.ftp.impl</name>
+        <value>org.apache.hadoop.fs.ftp.FTPFileSystem</value>
+        <description>The FileSystem for ftp: uris.</description>
+    </property>
+	<property>
+        <name>fs.hftp.impl</name>
+        <value>org.apache.hadoop.hdfs.HftpFileSystem</value>
+        <description>The FileSystem for hftp: uris.</description>
+    </property>
+  
+</configuration>

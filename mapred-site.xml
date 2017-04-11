@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+	<property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+
+    <property>
+        <name>mapreduce.map.output.compress</name>
+        <value>true</value>
+    </property>
+    <!--mid compress format Snaappy ==> lzo-->
+    <property>
+        <name>mapred.map.output.compress.codec</name>
+        <!--<value>org.apache.hadoop.io.compress.SnappyCodec</value>-->
+        <value>com.hadoop.compression.lzo.LzoCodec</value>
+    </property>
+
+    <property>
+        <name>gc.path</name>
+        <value>${hadoop.tmp.dir}</value>
+    </property>
+
+     <!-- map占的资源-->
+    <property>
+        <name>mapreduce.map.memory.mb</name>
+        <value>682</value>
+    </property>
+
+    <property>
+        <name>mapreduce.map.cpu.vcores</name>
+        <value>1</value>
+    </property>
+    <!--map -->
+    <!-- reduce占的资源-->
+    <property>
+        <name>mapreduce.reduce.memory.mb</name>
+        <value>1364</value>
+    </property>
+
+    <property>
+        <name>mapreduce.reduce.cpu.vcores</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>mapreduce.map.java.opts</name>
+        <value>-Xmx1091m -verbose:gc -Xloggc:${gc.path}/reduce-%t.gc</value>
+    </property>
+     <!--启动jvm的参数,this setting is expired, map/reduce set mapreduce.map/reduce.java.opts -->
+     <!--
+    <property>
+        <name>mapred.child.java.opts</name>
+        <value>-Xmx200m -verbose:gc -Xloggc:${gc.path}/mr-%t.gc</value>
+    </property>
+    -->
+    <property>
+         <name>mapred.child.java.opts</name>
+         <value>-XX:ErrorFile=/tmp/hs_err_pid%p.log</value>
+     </property>
+    <property>
+        <name>mapreduce.map.java.opts</name>
+        <value>-Xmx545m -verbose:gc -Xloggc:${gc.path}/map-%t.gc</value>
+    </property>
+
+    <!--io sort mb-->
+     <property>
+        <name>mapreduce.task.io.sort.mb</name>
+        <value>272</value>
+    </property>
+
+     <!-- am的内存,默认为6G，包括cup cores 等等这个数值在测试或者小集群中 设置的数值要大于map/reduce的内存mb,以便开启uber模式 -->
+    <property>
+        <name>yarn.app.mapreduce.am.resource.mb</name>
+        <value>1364</value>
+    </property>
+    <!-- 启动am进程的内存为5G,AP master jvm opts -->
+    <property>
+        <name>yarn.app.mapreduce.am.command-opts</name>
+        <value>-Xmx1091m -verbose:gc -Xloggc:${gc.path}/am-%t.gc</value>
+    </property>
+    <property>
+        <name>yarn.app.mapreduce.am.resource.cpu-vcores</name>
+        <value>1</value>
+    </property>
+
+    <!--map/reduce的中间结果保存路径-->
+    <property>
+        <name>mapreduce.cluster.local.dir</name>
+        <value>
+            /hdd1/yarn/mapred/local/
+        </value>
+    </property>
+<!--默认执行队列-->
+    <property>
+        <name>mapreduce.job.queuename</name>
+        <value>default</value>
+    </property>
+
+    <property>
+        <name>mapreduce.job.maps</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>mapreduce.job.reduce</name>
+        <value>1</value>
+    </property>
+
+
+    <property>
+        <name>mapreduce.jobhistory.address </name>
+        <value>172.17.0.2:10020</value>
+    </property>
+
+    <property>
+        <name>mapreduce.jobhistory.webapp.address</name>
+        <value>172.17.0.2:19888</value>
+    </property>
+    <property>
+        <name>mapred.child.env</name>
+        <value>LD_LIBRARY_PATH=/opt/hadoop/lib/native</value>
+    </property>
+</configuration>
