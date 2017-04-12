@@ -19,7 +19,8 @@
 <configuration>
      <property>
         <name>qyer-hadoop</name>
-        <value>172.17.0.2</value>
+        <value>10.1.10.31</value>
+       <!-- <value>ra33.ra.qyer.idc</value> -->
     </property>
 	 <!--客户端连接HDFS时，默认的路径前缀-->
     <property>
@@ -29,11 +30,12 @@
      <!--A base for other temporary directories.-->
     <property>
         <name>hadoop.tmp.dir</name>
-        <value>/hdd1/hadoop/tmp</value>
+        <value>/u01/hadoop/hdfs/data1/hadoop/tmp</value>
     </property>
+    <!--defalut is 4096 sequencefile buffer-->
     <property>
         <name>io.file.buffer.size</name>
-        <value>4096</value>
+        <value>65536</value>
     </property>
     <!--add lzo lzop-->
     <property>
@@ -51,7 +53,7 @@
          <name>io.compression.codec.lzo.class</name> 
          <value>com.hadoop.compression.lzo.LzoCodec</value> 
     </property> 
-    <!-- trash time 7days-->
+    <!-- trash time 7days,unit is min -->
     <property>
         <name>fs.trash.interval</name>
         <value>10080</value>
@@ -70,8 +72,10 @@
     <property>
         <name>io.seqfile.local.dir</name>
         <value>
-            /hdd1/io/local/,
-            /hdd1/io/local_2/
+            /u01/hadoop/hdfs/data2/io/local/,
+            /u01/hadoop/hdfs/data3/io/local/,
+            /u01/hadoop/hdfs/data4/io/local/,
+            /u01/hadoop/hdfs/data4/io/local/
         </value>
     </property>
     <!--hadoop 支持的文件系统命名规则 hdfs local ftp s3 hftp ...-->

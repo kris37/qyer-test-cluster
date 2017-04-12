@@ -15,7 +15,6 @@
 
 # User for YARN daemons
 export HADOOP_YARN_USER=${HADOOP_YARN_USER:-yarn}
-
 # resolve links - $0 may be a softlink
 export YARN_CONF_DIR="${YARN_CONF_DIR:-$HADOOP_YARN_HOME/conf}"
 
@@ -37,7 +36,7 @@ JAVA_HEAP_MAX=-Xmx1000m
 # For setting YARN specific HEAP sizes please use this
 # Parameter and set appropriately
 # YARN_HEAPSIZE=1000
-
+export YARN_HEAPSIZE=2048
 # check envvars which might override default args
 if [ "$YARN_HEAPSIZE" != "" ]; then
   JAVA_HEAP_MAX="-Xmx""$YARN_HEAPSIZE""m"

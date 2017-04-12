@@ -45,9 +45,11 @@ done
 #export HADOOP_HEAPSIZE=
 #export HADOOP_NAMENODE_INIT_HEAPSIZE=""
 export HADOOP_HEAPSIZE=1024
-export HADOOP_NAMENODE_OPTS="-Xms1g -Xmx10g"
+export YARN_HEAPSIZE=2048
+export HADOOP_NAMENODE_OPTS="-Xms5g -Xmx8g"
 
 # Extra Java runtime options.  Empty by default.
+export HADOOP_OPTS="-Djava.library.path=${HADOOP_HOME}/lib/native/"
 export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true"
 
 # Command specific options appended to HADOOP_OPTS when specified
@@ -60,7 +62,7 @@ export HADOOP_NFS3_OPTS="$HADOOP_NFS3_OPTS"
 export HADOOP_PORTMAP_OPTS="-Xmx512m $HADOOP_PORTMAP_OPTS"
 
 # The following applies to multiple commands (fs, dfs, fsck, distcp etc)
-export HADOOP_CLIENT_OPTS="-Xmx512m $HADOOP_CLIENT_OPTS"
+export HADOOP_CLIENT_OPTS="-Xmx1024m $HADOOP_CLIENT_OPTS"
 #HADOOP_JAVA_PLATFORM_OPTS="-XX:-UsePerfData $HADOOP_JAVA_PLATFORM_OPTS"
 
 # On secure datanodes, user to run the datanode as after dropping privileges.
