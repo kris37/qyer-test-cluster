@@ -127,7 +127,7 @@
     <property>
         <description>The hostname of the Timeline service web application.</description>
         <name>yarn.timeline-service.hostname</name>
-        <value>10.1.10.32</value>
+        <value>10.1.10.33</value>
     </property>
 
     <property>
