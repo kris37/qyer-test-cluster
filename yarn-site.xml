@@ -142,7 +142,7 @@
 
      <property>
         <name>yarn.log.server.url</name>
-        <value>http://${yarn.resourcemanager.hostname}:19888/jobhistory/logs/</value>
+        <value>http://10.1.10.33:19888/jobhistory/logs/</value>
     </property>
 
 </configuration>
