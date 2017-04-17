@@ -48,8 +48,6 @@
 # HADOOP_HOME=${bin}/../../hadoop
 
 # Hive Configuration Directory can be controlled by:
-export HADOOP_HOME=/opt/hadoop HIVE_HOME=/opt/hive SPARK_HOME=/opt/spark HADOOP_LOG_DIR=/hdd1/hadoop/logs YARN_LOG_DIR=/hdd1/hadoop/logs
-export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop HADOOP_PREFIX=${HADOOP_HOME} HADOOP_PID_DIR=/hdd1/hadoop/pid
 export HCAT_HOME=${HIVE_HOME}/hcatalog
 export HIVE_CONF_DIR=${HIVE_HOME}/conf
 
