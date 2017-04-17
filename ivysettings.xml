@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+
 <!--
    Licensed to the Apache Software Foundation (ASF) under one or more
    contributor license agreements.  See the NOTICE file distributed with
@@ -14,27 +14,24 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+   -->
+
+<!--This file is used by grapes to download dependencies from a maven repository.
+    This is just a template and can be edited to add more repositories.
 -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-<xsl:output method="html"/>
-<xsl:template match="configuration">
-<html>
-<body>
-<table border="1">
-<tr>
- <td>name</td>
- <td>value</td>
- <td>description</td>
-</tr>
-<xsl:for-each select="property">
-<tr>
-  <td><a name="{name}"><xsl:value-of select="name"/></a></td>
-  <td><xsl:value-of select="value"/></td>
-  <td><xsl:value-of select="description"/></td>
-</tr>
-</xsl:for-each>
-</table>
-</body>
-</html>
-</xsl:template>
-</xsl:stylesheet>
+
+<ivysettings>
+  <!--name of the defaultResolver should always be 'downloadGrapes'. -->
+  <settings defaultResolver="downloadGrapes"/>
+  <resolvers>
+    <!-- more resolvers can be added here -->
+    <chain name="downloadGrapes">
+      <!-- This resolver uses ibiblio to find artifacts, compatible with maven2 repository -->
+      <ibiblio name="central" m2compatible="true"/>
+      <!-- File resolver to add jars from the local system. -->
+      <filesystem name="test" checkmodified="true">
+        <artifact pattern="/tmp/[module]-[revision](-[classifier]).jar" />
+      </filesystem>
+    </chain>
+  </resolvers>
+</ivysettings>
