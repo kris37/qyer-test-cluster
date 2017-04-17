@@ -34,12 +34,12 @@
 	</property>
 	<property>
   		<name>javax.jdo.option.ConnectionUserName</name>
-  		<value>root</value>
+  		<value>panqiang</value>
   		<description>username to use against metastore database</description>
 	</property>
 	<property>
   		<name>javax.jdo.option.ConnectionPassword</name>
- 		 <value>root</value>
+ 		 <value>fs1n75z6</value>
   		<description>password to use against metastore database</description>
 	</property>
 	<!--merge final reslut files,defalut is false this set true-->
