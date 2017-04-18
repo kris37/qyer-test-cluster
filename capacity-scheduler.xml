@@ -126,6 +126,7 @@
     <value>50</value>
     <description>
     均衡分配资源,提交到此队列的job 的user 数过多时，占用资源最大的用户的资源不会超过这个值，但是如果时刻user只有1的话会占用不受此值限制会user-limit-factor 限制
+    </description>
   </property>
   <property>
     <name>yarn.scheduler.capacity.root.hadoop.state</name>
