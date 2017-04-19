@@ -138,7 +138,7 @@
   <!--hadoop 限制user limit-->
   <property>
     <name>yarn.scheduler.capacity.root.hadoop.acl_submit_applications</name>
-    <value>root,hive,hue,spark,kylin,panqiang,xudong,zijing</value>
+    <value>root,hive,hue,spark,hadoop</value>
     <description>
       The ACL of who can submit jobs to the hadoop queue. Anyone
     </description>
@@ -189,7 +189,7 @@
   <!--algorithm 限制user limit-->
   <property>
     <name>yarn.scheduler.capacity.root.algorithm.acl_submit_applications</name>
-    <value>root,hive,hue,spark,kylin,panqiang,xudong,zijing</value>
+    <value>root,hive,hue,spark,hadoop</value>
     <description>
       The ACL of who can submit jobs to the algorithm queue. Anyone
     </description>

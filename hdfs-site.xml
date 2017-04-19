@@ -23,6 +23,11 @@
         <value>qyer</value>
     </property>
 -->
+<!--after the first format namenode ,set this value false ,avoid format namenode -->
+     <property>
+        <name>dfs.namenode.support.allow.format</name>
+        <value>false</value>
+    </property>
    <!-- 保留200G空间:209715200  每块磁盘是2t 保留 10% ,10g:10485760  -->
     <property>
         <name>dfs.datanode.du.reserved</name>
@@ -98,10 +103,29 @@
     <!--secondary ／checkpoint node settings 30min defalut is 1h-->
      <property>
         <name>dfs.namenode.checkpoint.period</name>
-        <value>3600</value>
+        <value>1800</value>
          <description>The number of seconds between two periodic checkpoints.
  		 </description>
-     </property>
+    </property>
+
+    <property>
+      <name>dfs.namenode.checkpoint.txns</name>
+      <value>50000</value>
+    </property>
+  <!--editlogs and segement numbers -->
+    <property>
+      <name>dfs.namenode.num.extra.edits.retained</name>
+      <value>50000</value>
+    </property>
+     <property>
+        <name>dfs.namenode.max.extra.edits.segments.retained</name>
+         <value>1000</value>
+       <description>The maximum number of extra edit log segments which should be retained
+       beyond what is minimally necessary for a NN restart. When used in conjunction with
+       dfs.namenode.num.extra.edits.retained, this configuration property serves to cap
+       the number of extra edits files to a reasonable value.
+       </description>
+    </property>
      <!--dfs.namenode.checkpoint.dir,fs.checkpoint.dir is the same but all set-->
      <property>
   	   	<name>dfs.namenode.checkpoint.dir</name>
