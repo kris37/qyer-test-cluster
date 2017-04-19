@@ -29,11 +29,26 @@
     </property>
     <!--mid compress format Snaappy ==> lzo-->
     <property>
-        <name>mapred.map.output.compress.codec</name>
-        <!--<value>org.apache.hadoop.io.compress.SnappyCodec</value>-->
-        <value>com.hadoop.compression.lzo.LzoCodec</value>
+        <name>mapreduce.map.output.compress.codec</name>
+        <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+        <!--<value>com.hadoop.compression.lzo.LzoCodec</value>-->
     </property>
-
+    <!-- 最终输出结果是否压缩,对于旧属性的mapred的部分进行替换,默认不压缩false
+    <property>
+      <name>mapreduce.output.fileoutputformat.compress</name>
+      <value>true</value>
+    </property>
+    压缩方式code
+    <property>
+      <name>mapreduce.output.fileoutputformat.compress.codec</name>
+      <value>com.hadoop.compression.lzo.LzopCodec</value>
+  </property>
+  此设置是上mapreduce.output.fileoutputformat.compress.codec 的过期项，但是仍然可用
+   <property>
+      <name>mapred.output.compression.codec</name>
+      <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+  </property>
+    -->
     <property>
         <name>gc.path</name>
         <!--<value>${hadoop.tmp.dir}/gc</value>-->
