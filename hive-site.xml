@@ -17,10 +17,28 @@
 		<name>hive.exec.mode.local.auto</name>
 		<value>false</value>
 	</property>
-	<property>
-		<name>hive.exec.mode.local.auto</name>
-		<value>false</value>
-	</property>
+
+  <!--hive compress settings-->
+    <!--map out compress snappy-->
+
+    <property>
+      <name>hive.exec.compress.intermediate</name>
+      <value>true</value>
+    </property>
+
+    <property>
+      <name>mapreduce.map.output.compress.codec</name>
+      <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+    </property>
+    <!--job out compress lzop-->
+    <property>
+      <name>hive.exec.compress.output</name>
+      <value>true</value>
+    </property>
+    <property>
+      <name>mapreduce.output.fileoutputformat.compress.codec</name>
+      <value>com.hadoop.compression.lzo.LzopCodec</value>
+    </property>
 	<!--jdbc settings-->
 	<property>
   		<name>javax.jdo.option.ConnectionURL</name>
