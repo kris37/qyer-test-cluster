@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 
 <!--
    Licensed to the Apache Software Foundation (ASF) under one or more
@@ -14,24 +15,17 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-   -->
-
-<!--This file is used by grapes to download dependencies from a maven repository.
-    This is just a template and can be edited to add more repositories.
 -->
 
-<ivysettings>
-  <!--name of the defaultResolver should always be 'downloadGrapes'. -->
-  <settings defaultResolver="downloadGrapes"/>
-  <resolvers>
-    <!-- more resolvers can be added here -->
-    <chain name="downloadGrapes">
-      <!-- This resolver uses ibiblio to find artifacts, compatible with maven2 repository -->
-      <ibiblio name="central" m2compatible="true"/>
-      <!-- File resolver to add jars from the local system. -->
-      <filesystem name="test" checkmodified="true">
-        <artifact pattern="/tmp/[module]-[revision](-[classifier]).jar" />
-      </filesystem>
-    </chain>
-  </resolvers>
-</ivysettings>
+<allocations>
+  <pool name="production">
+    <schedulingMode>FAIR</schedulingMode>
+    <weight>1</weight>
+    <minShare>2</minShare>
+  </pool>
+  <pool name="test">
+    <schedulingMode>FIFO</schedulingMode>
+    <weight>2</weight>
+    <minShare>3</minShare>
+  </pool>
+</allocations>
