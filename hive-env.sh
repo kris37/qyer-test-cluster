@@ -22,7 +22,32 @@
 # The hive service being invoked (CLI/HWI etc.) is available via the environment
 # variable SERVICE
 
+# change hive server2 and metastore jvm  testing
+if [ "$SERVICE" = "cli" ]; then
+if [ -z "$DEBUG" ]; then
+    export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -Xmx512m -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:+useParNewGC -XX:-useGCOverheadLimit"
+else
+    export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -Xmx512m -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:-useGCOverheadLimit"
+fi
+fi
 
+if [ "$SERVICE" = "hiveserver2" ]; then
+   if [ -z "$DEBUG" ]; then
+     export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -Xmx4096m -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:+UseParNewGC -XX:-UseGCOverheadLimit"
+   else
+     export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -Xmx4096m  -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:-UseGCOverheadLimit"
+   fi
+ fi
+
+if [ "$SERVICE" = "metastore" ]; then
+   if [ -z "$DEBUG" ]; then
+     export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -Xmx4096m -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:+UseParNewGC -XX:-UseGCOverheadLimit"
+   else
+     export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -Xmx4096m  -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:-UseGCOverheadLimit"
+   fi
+ fi
+
+export HADOOP_HEAPSIZE=1024
 # Hive Client memory usage can be an issue if a large number of clients
 # are running at the same time. The flags below have been useful in 
 # reducing memory usage:
@@ -52,4 +77,4 @@ export HCAT_HOME=${HIVE_HOME}/hcatalog
 export HIVE_CONF_DIR=${HIVE_HOME}/conf
 
 # Folder containing extra ibraries required for hive compilation/execution can be controlled by:
-# export HIVE_AUX_JARS_PATH=
+export HIVE_AUX_JARS_PATH=${HIVE_HOME}/lib
