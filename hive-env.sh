@@ -25,25 +25,25 @@
 # change hive server2 and metastore jvm  testing
 if [ "$SERVICE" = "cli" ]; then
 if [ -z "$DEBUG" ]; then
-    export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -Xmx512m -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:+useParNewGC -XX:-useGCOverheadLimit"
+    export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS -XX:NewRatio=12 -Xmx512m -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:+useParNewGC -XX:-useGCOverheadLimit"
 else
-    export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -Xmx512m -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:-useGCOverheadLimit"
+    export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS -XX:NewRatio=12 -Xmx512m -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:-useGCOverheadLimit"
 fi
 fi
 
 if [ "$SERVICE" = "hiveserver2" ]; then
    if [ -z "$DEBUG" ]; then
-     export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -Xmx4096m -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:+UseParNewGC -XX:-UseGCOverheadLimit"
+     export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS -XX:NewRatio=12 -Xmx4096m -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:+UseParNewGC -XX:-UseGCOverheadLimit"
    else
-     export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -Xmx4096m  -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:-UseGCOverheadLimit"
+     export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS -XX:NewRatio=12 -Xmx4096m  -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:-UseGCOverheadLimit"
    fi
  fi
 
 if [ "$SERVICE" = "metastore" ]; then
    if [ -z "$DEBUG" ]; then
-     export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -Xmx4096m -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:+UseParNewGC -XX:-UseGCOverheadLimit"
+     export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS -XX:NewRatio=12 -Xmx4096m -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:+UseParNewGC -XX:-UseGCOverheadLimit"
    else
-     export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -Xmx4096m  -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:-UseGCOverheadLimit"
+     export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS -XX:NewRatio=12 -Xmx4096m  -Xms10m -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:-UseGCOverheadLimit"
    fi
  fi
 
