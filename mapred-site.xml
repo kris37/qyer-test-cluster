@@ -152,4 +152,13 @@
         <name>mapred.child.env</name>
         <value>LD_LIBRARY_PATH=/opt/hadoop/lib/native</value>
     </property>
+<!--推测执行功能禁用-->
+<property>
+  <name>mapreduce.map.speculative</name>
+  <value>false</value>
+</property>
+<property>
+  <name>mapreduce.reduce.speculative</name>
+  <value>false</value>
+</property>
 </configuration>
