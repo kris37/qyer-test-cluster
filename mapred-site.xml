@@ -161,4 +161,15 @@
   <name>mapreduce.reduce.speculative</name>
   <value>false</value>
 </property>
+<!--失败重试禁用 默认值为4-->
+<property>
+  <name>mapreduce.map.maxattempts</name>
+  <value>0</value>
+</property>
+<property>
+  <name>mapreduce.reduce.maxattempts</name>
+  <value>0</value>
+</property>
+
+
 </configuration>
