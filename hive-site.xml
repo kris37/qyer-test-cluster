@@ -19,11 +19,26 @@
 	</property>
 
   <!--hive compress settings-->
-    <!--map out compress snappy-->
+   
+<!--job chain media result -->
 
+  <property>
+    <name>hive.exec.compress.intermediate</name>
+    <value>true</value>
+    <description> This controls whether intermediate files produced by Hive betweenmultiple map-reduce jobs are compressed. The compression codec and other optionsare determined from hadoop config variables mapred.output.compress* </description>
+  </property>
+  
+  <property>
+    <name>hive.intermediate.compression.codec</name>
+    <value>com.hadoop.compression.lzo.LzoCodec</value>
+  </property>
+ <!--map out compress snappy-->
     <property>
-      <name>hive.exec.compress.intermediate</name>
+      <name>mapreduce.map.output.compress</name>
       <value>true</value>
+        <description>Should the outputs of the maps be compressed before being
+                 sent across the network. Uses SequenceFile compression.
+        </description>
     </property>
 
     <property>
